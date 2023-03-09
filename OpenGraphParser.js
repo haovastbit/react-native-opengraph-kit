@@ -176,6 +176,10 @@ async function fetchHtml(urlToFetch, forceGoogle = false) {
         userAgent
             = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
     }
+    
+    if(urlToFetch.indexOf('twitter.com') >= 0){
+        userAgent = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
+    }
 
     try {
         result = await fetch(urlToFetch, {
