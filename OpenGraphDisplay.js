@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: colors.defaultBackgroundColor,
-        height: 82,
+        // height: 80,
         padding: 5,
         overflow: 'hidden',
         marginBottom: 10,
@@ -154,7 +154,7 @@ export default class OpenGraphDisplay extends Component<Props> {
                             <Text numberOfLines={2} style={[styles.title, this.props.titleStyle]}>
                                 {this.props.data.title || ''}
                             </Text>
-                            {this.props.data.description && (
+                            {this.props.data.description ? (
                                 <Text
                                 numberOfLines={2}
                                 style={[
@@ -164,12 +164,13 @@ export default class OpenGraphDisplay extends Component<Props> {
                                 >
                                     {this.props.data.description || ''}
                                 </Text>
+                            ) : (
+                                <Text numberOfLines={2} style={[styles.url, this.props.urlStyle]}>
+                                    {this.props.data.url
+                                        ? this.props.data.url.toLowerCase()
+                                        : ''}
+                                </Text>
                             )}
-                            <Text style={[styles.url, this.props.urlStyle]}>
-                                {this.props.data.url
-                                    ? this.props.data.url.toLowerCase()
-                                    : ''}
-                            </Text>
                         </View>
                     </View>
                 </TouchableWithoutFeedback>
