@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: colors.defaultBackgroundColor,
-        height: 80,
+        height: 82,
         padding: 5,
         overflow: 'hidden',
         marginBottom: 10,
@@ -50,10 +50,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     image: {
-        flex: 1,
+        // flex: 1,
         resizeMode: 'cover',
         alignSelf: 'center',
         height: 70,
+        width: 70
     },
     title: {
         fontWeight: 'bold',
@@ -150,17 +151,20 @@ export default class OpenGraphDisplay extends Component<Props> {
                                 this.props.textContainerStyle,
                             ]}
                         >
-                            <Text style={[styles.title, this.props.titleStyle]}>
+                            <Text numberOfLines={2} style={[styles.title, this.props.titleStyle]}>
                                 {this.props.data.title || ''}
                             </Text>
-                            <Text
+                            {this.props.data.description && (
+                                <Text
+                                numberOfLines={2}
                                 style={[
                                     styles.description,
                                     this.props.descriptionStyle,
                                 ]}
-                            >
-                                {this.props.data.description || ''}
-                            </Text>
+                                >
+                                    {this.props.data.description || ''}
+                                </Text>
+                            )}
                             <Text style={[styles.url, this.props.urlStyle]}>
                                 {this.props.data.url
                                     ? this.props.data.url.toLowerCase()
