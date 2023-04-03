@@ -178,7 +178,7 @@ async function fetchHtml(urlToFetch, forceGoogle = false) {
     }
     
     if(urlToFetch.indexOf('twitter.com') >= 0){
-        userAgent = 'Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)';
+        userAgent = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
     }
 
     try {
