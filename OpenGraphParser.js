@@ -177,8 +177,20 @@ async function fetchHtml(urlToFetch, forceGoogle = false) {
             = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
     }
     
-    if(urlToFetch.indexOf('twitter.com') >= 0){
-        userAgent = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
+    if(urlToFetch.indexOf('twitter.com') >= 0 || urlToFetch.indexOf('x.com') >= 0){
+        const AgetForX = [
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0",
+            "facebookexternalhit/1.1;line-poker/1.0",
+            "recon (github.com/jimmysawczuk/recon; similar to Facebot, facebookexternalhit/1.1)",
+            "facebookexternalhit/1.1",
+            "facebookexternalhit/1.1 (compatible; Blueno/1.0; +https://naver.me/scrap)",
+            "facebookexternalhit/1.1; kakaotalk-scrap/1.0; +https://devtalk.kakao.com/t/scrap/33984",
+            "Mozilla/5.0 (compatible; The Lounge IRC Client; +https://github.com/thelounge/thelounge) facebookexternalhit/1.1 Twitterbot/1.0",
+            "Mozilla/5.0 (compatible) facebookexternalhit/1.1 (+https://faviconkit.com/robots)",
+            "RemindPreview/1.0 facebookexternalhit/1.0",
+            "Mozilla/5.0 (compatible) facebookexternalhit/1.1 ( https://faviconkit.com/robots)"
+        ];
+        userAgent = AgetForX[Math.floor(Math.random() * 10)];
     }
 
     try {
