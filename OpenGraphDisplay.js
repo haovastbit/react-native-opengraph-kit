@@ -98,6 +98,7 @@ type Props = {
     urlStyle: StyleSheet,
     urlOnlyContainerStyle: StyleSheet,
     urlOnlyTouchContainerStyle: StyleSheet,
+    onPress?: Function,
 };
 
 export default class OpenGraphDisplay extends Component<Props> {
@@ -106,6 +107,10 @@ export default class OpenGraphDisplay extends Component<Props> {
     };
 
     handleLinkPress = () => {
+        if(this.props.onPress){
+            this.props.onPress(this.props.data.url)
+            return
+        }
         Linking.canOpenURL(this.props.data.url)
             .then((supported) => {
                 if (!supported) {
